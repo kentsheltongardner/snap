@@ -1,0 +1,297 @@
+TODO
+
+If there is a single optimal path forward, draw the path
+
+
+Icons
+
+Wall        - The cell must not be traveled (implicit)
+Water       - The cell must not be an endpoint (implicit)
+
+Cover       - The cell must be traveled (1 option)
+Direction   - The cell must be traveled in the indicated direction (12 options)
+Order       - The cell must be traveled after all smaller order cells (5 options?)
+Balance     - The number of positive and negative balance icons must be equal (2 options)
+Separate    - There must be at least one (cell|icon) between each separate icon (1 option)
+
+Pair        - Must always be multiples of two in line (1 option)
+Balance     - Must be an equal number of colors in the line (4 options)
+
+Palindrome  - The palindrome icon must have a corresponding icon opposite it in the icon path (1 option)
+Symmetry    - The line formed must be horizontally/vertically/diagonally/rotationally symmetrical (5 options)
+Copy        - The icon has the same requirement type as the (previous|next) icon in the path (can be chained) (1 option)
+
+Number      - The number of traveled icons must be equal to the sum of the numbers on all number icons (4 options?)
+
+Length      - Length of line
+Orthogonal  - ?
+Every icon before must...
+Every icon after must...
+The previous icon must...
+The next icon must...
+
+
+
+Instead of icons we have objects that disappear after a valid pass
+An invalid pass means no movement
+Tokens (shrink)
+
+
+Circle, square, diamond, etc
+Only valid moves go forward, a single move over all icons wins
+Only valid moves go forward, moves remove icons, removing all icons wins
+Any possible move goes forward, valid moves remove icons, removing all icons wins
+Mimics the attempted moves of others, does not push
+Mimics the attempted moves of others, does push
+
+
+Objects
+Wall:       Must not be in path
+Water:      Must not be first or final path point
+
+For consistency, icons work best when all seen from the same perspective (above)
+Icons do not have memory
+Icons disappear if successfully traversed
+
+Icons (fade)
+
+Circle
+Square
+
+Content     Requirement satisfied by icons on line (order, palindrome)
+Line        Requirement satisfied by line properties (symmetric, turn count)
+Global      Requirement satisfied by icons off line (split)
+Unique      Copy, Offset (requirement exists at some offset from )
+
+
+Content
+
+Cover       Circle              No individual requirement
+Pair        Flower              Must be one of each other available flower color
+Group       Diamond             All and only diamonds of one color
+Order       Square              Squares of a color must appear in ascending order
+                                First and last with positive
+Split       Kite                Kites of the same color may not appear consecutively
+Match       Sun                 Must be sun of same color opposite in path
+Count       Dots                Must be n icons on line
+Mirror      Plus                Line must be symmetric
+Direct      Triangle            Line must exit the cell in the indicated direction
+Rotate      Pinwheel            Line must pass through cell in clockwise or counterclockwise rotation
+Copy        Star                Copies the requirement of next icon
+Halve       Split circle        Half of all icons must be on line
+Isolate     Line and squares    All icons not on the line must be alone
+
+
+
+First       Sun         Hollow star     Must be crossed first in a path
+Last        Moon        Solid star      Must be crossed last in a path
+Order       Stump       Rounded squares Must be crossed in order of stump ring count and size
+Equal       Flower      Hexagon         Must be the same number of flowers of each color on the path
+Group       Ant         Stars           Must have ants of only one color on the path (black, red, yellow, brown)
+Separate    Butterfly   Kite            Must not be next to a butterfly of the same color on the path
+                                        Use honeycombs to coerce all of type
+                                        Position to coerce first and last
+Palindrome  Leaf                        Must be a corresponding leaf of the same color opposite it in the path order
+Number      Honeycomb                   Must cross n icons (additive?)
+                                        Must be only icon crossed (n = 1)
+                                        All icons must be crossed simultaneously (n = number of icons in level)
+Even        Clam                        Must have an even number of clams in the path (clamshells, paired)
+Copy        Clover                      Take on the requirement of the next requirement in the path (4 leaves, suggests magic)
+
+
+
+Consecutive                                 Must not be separated by other icons on a path
+
+
+Line
+
+Symmetric   ?                               Must be crossed by a symmetrical path (data: reflection (H, V, R, P?, N?))
+Direction   Paw print   Triangle            Must be exited in the indicated direction
+                                            Must not be last cell in path
+Rotation    Snake       Arrows              Must be crossed by a clockwise or counterclockwise turn (path?) (data: rotation) (spirals from tail center to head top)
+
+
+Lily pad
+Butterfly, Moth
+Sun, Moon, Star (4 spikes, ring?)
+Spiderweb, Snowflake
+Circle, Square, Diamond (shape)
+Urchin, Clam, Crab
+Starfish, Spikes, Turtle, Ladybug, Spider, Centipede, Scorpion, Bee, Wasp, Fruit (sliced?), Gem (natural crystal? cut?)
+
+Start a line on a type to require its satisfaction
+Place many requirements over chasm with few rest points (perhaps 2)
+
+
+
+            Path must only contain members of group number
+            Path must cross half of all icons
+            Path must separate icon colors
+            Path must be a straight line
+            Path must be a rectangle
+            Path must have n turns
+            Path must have a certain length
+            Path must have a 'winding number' of zero
+
+
+The main problem with off-path requirements is that they must be satisfied on every move, meaning they must all disappear on the first move
+They are thematically inconsistent with the on-path lines that can be removed over a series of turns
+
+
+
+
+Above
+
+try svg instead of path2d
+
+
+
+Side
+
+Fruit:      
+Drop(s):    
+Acorn:      
+Mountain:   
+Mushroom:   
+
+Unnatural
+
+Diamond:    
+
+
+Path icon knows about self (stone)
+Path icon knows about icons on path (sun)
+Path icon knows about shape of path (leaf)
+Path icon knows about all icons? ()
+
+Non-path icon knows about all icons? (wall, satisfied when NOT on path)
+Icon knows about past states? X
+
+Non-path icons? Surround, separate, etc., that prevent a movement and disappear on completion?
+
+
+Must be crossed when no adjacent object
+Must be crossed when surrounded (by line)
+Rectangle
+Square
+Straight line
+Number of turns
+Length
+
+
+
+SVG Cad
+
+Everything symbolic / rational
+
+Copy
+Scale 1d, 2d
+Rotate
+Mirror (about axis or line)
+Point (x, y in rational coords)
+Size ()
+Line (2+ Points)
+Circle (Point, radius)
+Square (Point, radius)
+Rectangle (Point, Size)
+Ortho
+Snap
+Osnap
+Polygon
+
+
+
+Rules
+
+Advancing while consuming icons destroys a snap
+Advancing without consuming any icons repositions a snap
+To win a level, all icons must be consumed and snaps removed
+
+
+Add a scale to icons and snaps
+On advance, begin downscale toward zero and disable
+
+
+
+Advance
+Advance and consume?
+Advance and evaporate?
+
+
+
+
+
+Random level thoughts/records
+
+Starting on a requirement forces completion of requirement
+
+Last requirements placed in nooks bordered by wall on three sides forces completion of multiple paths
+Placing a sequence of icons between walls over water forces the simultaneous completion of those icons
+    Horizontal + Vertical Symmetry = straight line requirement
+    n Pair icons = sequence length of 2n
+All of one type over water, rest over land
+Easy route to eliminate a type, but not enough remaining to satisfy pairs
+
+Palindrome + Pair + Cover
+
+Offer an easy palindrome, but hide the other palindrome next to an unavoidable icon
+
+
+Cover
+
+Pair
+
+Order
+
+Separate
+
+Palindrome
+
+Symmetry
+
+Together
+
+
+Exclude     Must not be in the same path as an Exclude of a different group
+Offset      Cover that must be satisfied at a distance
+Line        Every cell up to the next wall or level edge must be covered
+Fill        Every cell on the level must have a path through it
+Final       When this path completes, there must be no remaining icons
+Alone       There must be no other icons on the path
+Uncovered   Must not be covered, disappears after 1 turn 
+Turn        Must be crossed on the nth turn
+Count       Must be n icons on line
+Rotate      Line must pass through cell in clockwise or counterclockwise rotation
+Half        Half of all icons must be on line
+Isolate     All icons not on the line must be alone
+First       Must be crossed first in a path
+Last        Must be crossed last in a path
+Equal       Must be the same number of Equals of each color on the path
+Group       Must have Groups of only one color on the path
+Even        Must have an even number of clams in the path (clamshells, paired)
+            Path must only contain members of group number
+            Path must be a square/rectangle
+            Path must have n turns
+            Path must have a certain length
+            Path must have a 'winding number' of zero
+
+Selection
+
+Path - Disappears when on path
+Encirclement - Disappears when encircled by path
+Global - Always disappears on first move
+
+With a small number of possible experiments, requirements are indistinguishable from each other
+
+
+
+
+
+Bad ideas
+
+Player collects things after going over them
+Order (can't go over higher orders while lesser orders are present globally)
+Different Snap types (straight line only, crossover)
+Brown blocks that can be pushed (mobile on ground, fixed in water)
+Gray snaps that mimic player
+

@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+body {
+    background-color: black;
+}
+#snap-canvas {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+}
+#svg-box {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
