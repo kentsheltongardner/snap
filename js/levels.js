@@ -91,11 +91,11 @@ function RandomLevelData(width, height) {
     }
 
 }
-const randomLevel = RandomLevelData(6, 5)
+//const randomLevel = RandomLevelData(6, 5)
 //#endregion
 
 const levelData = [
-    randomLevel,
+    //randomLevel,
 
 // Player can move from spot to spot
 //#region Cover

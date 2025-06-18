@@ -11,19 +11,19 @@ const SnapHeadRadius        = 1 / 6
 // const FloorColor            = '#555'=
 // const WallColor             = '#aaa'
 
-// const WaterColor            = '#2C5A90'
-// const FloorColor            = '#72A049'
-// const DirtColor             = '#B0662E'
-// const WallColor             = '#B6B6B6'
-// const RivetColor            = '#969696'
-// const SnapColor             = '#FFF9E7'//'#C4414F'
-
-const WaterColor            = '#202020'
-const FloorColor            = '#808080'
+const WaterColor            = '#2C5A90'
+const FloorColor            = '#72A049'
 const DirtColor             = '#B0662E'
-const WallColor             = '#c0c0c0'
-const RivetColor            = '#404040'
-const SnapColor             = '#ffffff'//'#C4414F'
+const WallColor             = '#B6B6B6'
+const RivetColor            = '#969696'
+const SnapColor             = '#FFF9E7'//'#C4414F'
+
+// const WaterColor            = '#202020'
+// const FloorColor            = '#808080'
+// const DirtColor             = '#B0662E'
+// const WallColor             = '#c0c0c0'
+// const RivetColor            = '#404040'
+// const SnapColor             = '#ffffff'//'#C4414F'
 
 const Unreachable           = 999 // Distinct and larger than any map
 const Impassable            = -1
